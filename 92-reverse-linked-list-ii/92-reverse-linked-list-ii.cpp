@@ -14,27 +14,39 @@ public:
         if(head == NULL || head->next == NULL || right <= left) {
             return head;
         }
-        
-        stack<int> s;
-        ListNode *temp = head;
+        ListNode *prev = NULL, *curr = NULL, *next = NULL;
+        ListNode *temp = NULL;
         int count = 1;
-        while(temp != NULL) {
-            if(count >= left && count <= right) {
-                s.push(temp->val);
-            } 
-            temp = temp->next;
-            count++;
-        }
-        count = 1;
-        temp = head;
-        while(temp != NULL) {
-            if(count >= left && count <= right) {
-                temp->val = s.top();
-                s.pop();
+        while(count < left) {
+            if(temp == NULL) {
+                temp = head;
+            } else {
+                temp = temp->next;   
             }
-            temp = temp->next;
             count++;
         }
-        return head;
+        
+        
+        prev = (temp == NULL) ? NULL : temp->next;
+        curr = (temp == NULL) ? head : prev->next;
+        if(temp != NULL) {
+            count++;
+        }
+        while(count <= right) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+            count++;
+        }
+        if(temp == NULL) {
+            head->next = curr;
+            return prev;
+        } else {
+            temp->next->next = curr;
+            temp->next = prev;
+            return head;
+        }
+
     }
 };
