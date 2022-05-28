@@ -15,6 +15,9 @@ public:
         }
         
         for(int i = index; i < nums.size(); i++) {
+            if(i > index && nums.at(i - 1) == nums.at(i)) {
+                continue;
+            }
             swap(nums.at(index), nums.at(i));
             ds.push_back(nums.at(index));
             helper(index + 1, nums, ans, ds);
