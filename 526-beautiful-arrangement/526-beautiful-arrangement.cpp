@@ -6,8 +6,6 @@ public:
         a1 = a2;
         a2 = temp;
     }
-    
-    
     int helper(int index, vector<int> &nums) {
         if(index >= nums.size()) {
             return 1;
@@ -22,8 +20,6 @@ public:
         }
         return sum;
     } 
-    
-    
     int countArrangement(int n) {
         vector<int> nums;
         for(int i = 1; i <= n; i++) {
