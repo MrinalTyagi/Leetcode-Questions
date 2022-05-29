@@ -6,10 +6,13 @@ public:
             ans.push_back(ds);
             return;
         }
-        helper(index + 1, nums, ans, ds);
-        ds.push_back(nums.at(index));
-        helper(index + 1, nums, ans, ds);
-        ds.pop_back();
+        ans.push_back(ds);
+        for(int i = index; i < nums.size(); i++) {
+            if(i > index && nums[i] == nums[i - 1]) continue;
+            ds.push_back(nums.at(i));
+            helper(i + 1, nums, ans, ds);
+            ds.pop_back();
+        }
     }    
     
     
@@ -18,8 +21,6 @@ public:
         vector<int> ds;
         sort(nums.begin(), nums.end());
         helper(0, nums, ans, ds);
-        sort(ans.begin(), ans.end());
-        ans.erase( unique( ans.begin(), ans.end() ), ans.end() );
         return ans;
     }
 };
