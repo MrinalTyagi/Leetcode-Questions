@@ -14,9 +14,9 @@ public:
         for(int i = s.length() - 1; i>= 0;i--) {
             int val = map[s.at(i)];
             if(val < prev) {
-                res -= map[s.at(i)];
+                res -= val;
             } else {
-                res += map[s.at(i)];
+                res += val;
             }
             prev = val;
         }
