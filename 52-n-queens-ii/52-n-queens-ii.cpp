@@ -2,21 +2,24 @@ class Solution {
 public:
     
     bool isSafe(int row, int col, vector<vector<int>> &board, int n) {
-        for(int i = 0; i < col; i++) {
-            if(board.at(row).at(i) == 1) {
-                return false;
-            }
-        }
         for(int i = 0; i < row; i++) {
             if(board.at(i).at(col) == 1) {
                 return false;
             }
         }
+        
+        for(int i = 0; i < col; i++) {
+            if(board.at(row).at(i) == 1) {
+                return false;
+            }
+        }
+        
         for(int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
             if(board.at(i).at(j) == 1) {
                 return false;
             }
         }
+        
         for(int i = row + 1, j = col - 1; i < n && j >= 0; i++, j--) {
             if(board.at(i).at(j) == 1) {
                 return false;
