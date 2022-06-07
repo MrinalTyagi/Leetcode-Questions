@@ -12,9 +12,6 @@ public:
                 nums1.at(third++) = nums2.at(second++);
             }
         }
-        // while(first < n + m) {
-        //     nums1.at(third++) = nums1.at(first++);
-        // }
         while(second < n) {
             nums1.at(third++) = nums2.at(second++);
         }
