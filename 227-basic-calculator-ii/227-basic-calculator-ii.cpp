@@ -38,17 +38,12 @@ public:
             t += st.top();
             st.pop();
         }
-        for(int i = 0; i < t.length(); i++) {
-            cout<<t.at(i);
-        }
-        cout<<endl;
         stack<int> f;
         for(int i = 0; i < t.length(); i++) {
             string a = "";
             while(i < t.length() && t.at(i) != ' ') {
                 a += t.at(i);
                 i++;
-                cout<<a<<endl;
             }
            
             if(isOperator(a)) {
