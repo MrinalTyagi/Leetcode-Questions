@@ -1,30 +1,23 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        string t = "";
-        for(int i = 0; i < numRows - 1; i++) {
-            int j = 0;
-            while(j < s.length() && s.at(j) == '#') {
-                j++;
-            }
-            bool isFirst = true;
-            while(j < s.length()) {
-                if(s.at(j) != '#') {
-                    t += s.at(j);   
-                }
-                s.at(j) = '#';
-                if(isFirst) {
-                    j = j + ((numRows - (i + 1)) * 2);   
-                } else {
-                    j = j + (2 * i);
-                }
-                isFirst = !isFirst;
-            }
+        if(numRows == 1) {
+            return s;
         }
-        for(int i = 0; i < s.length(); i++) {
-            if(s.at(i) != '#') {
-                t += s.at(i);
+        int minVal = min(numRows, int(s.size()));
+        vector<string> rows(minVal, "");
+        int currRow = 0;
+        bool goingDown = false;
+        for(char c : s) {
+            rows[currRow] += c;
+            if(currRow == 0 || currRow == numRows - 1) {
+                goingDown = !goingDown;
             }
+            currRow += (goingDown == true) ? 1 : -1;
+        }
+        string t = "";
+        for(int i = 0; i < rows.size(); i++) {
+            t += rows.at(i);
         }
         return t;
     }
