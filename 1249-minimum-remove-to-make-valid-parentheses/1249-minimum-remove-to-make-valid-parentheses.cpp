@@ -1,27 +1,24 @@
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
-        int count = 0;
-        for(int i = 0; i < s.length(); i++) {
+        int count1 = 0, count2 = 0;
+        for(int i = 0, j = s.length() - 1; i < s.length(); i++, j--) {
             if(s.at(i) == '(') {
-                count++;
+                count1++;
             } else if(s.at(i) == ')') {
-                if(count == 0) {
+                if(count1 == 0) {
                     s.at(i) = '#';
                 } else {
-                    count--;
+                    count1--;
                 }
             }
-        }
-        count = 0;
-        for(int i = s.length() - 1; i>= 0; i--) {
-            if(s.at(i) == ')') {
-                count++;
-            } else if(s.at(i) == '(') {
-                if(count == 0) {
-                    s.at(i) = '#';
+            if(s.at(j) == ')') {
+                count2++;
+            } else if(s.at(j) == '(') {
+                if(count2 == 0) {
+                    s.at(j) = '#';
                 } else {
-                    count--;
+                    count2--;
                 }
             }
         }
