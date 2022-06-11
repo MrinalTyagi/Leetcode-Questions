@@ -5,8 +5,8 @@ public:
         vector<int> val = {1000, 500, 100, 50, 10, 5, 1};
         vector<char> ch = {'M', 'D', 'C', 'L', 'X', 'V', 'I'};
         for(int i = 0; i < val.size(); i+=2) {
-            if(num / val.at(i) > 0) {
-                int v = num / val.at(i);
+            int v = num / val.at(i);
+            if(v > 0) {
                 int c = v * val.at(i);
                 if(v == 4) {
                     v -= 4;
