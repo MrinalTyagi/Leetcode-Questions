@@ -7,11 +7,10 @@ public:
         for(int i = 0; i < val.size(); i++) {
             int v = num / val.at(i);
             if(v > 0) {
-                int c = v * val.at(i);
                 while(v--) {
                     t += ch.at(i);
                 } 
-                num = num % c;
+                num = num % (v * val.at(i));
             }
         }
         return t;
