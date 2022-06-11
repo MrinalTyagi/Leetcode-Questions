@@ -20,10 +20,8 @@ public:
                     v -= 5;
                     t += ch.at(i - 1);
                 }
-                
-                while(v--) {
-                    t += ch.at(i);
-                }
+                string a(v, ch.at(i));
+                t += a;
                 num = num % (c);
             }
         }
