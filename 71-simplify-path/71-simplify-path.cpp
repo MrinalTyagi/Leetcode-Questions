@@ -13,7 +13,6 @@ public:
                 i = j;
                 if(t != "") {
                     if(t == ".") {
-                        continue;
                     } else if(t == "..") {
                         if(!s.empty()) {
                           s.pop_back();   
