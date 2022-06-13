@@ -35,8 +35,6 @@ public:
         vector<string> ans;
         string ds = "";
         helper(n * 2, ans, ds);
-        sort(ans.begin(), ans.end());
-        ans.erase( unique( ans.begin(), ans.end() ), ans.end() );
         return ans;
     }
 };
