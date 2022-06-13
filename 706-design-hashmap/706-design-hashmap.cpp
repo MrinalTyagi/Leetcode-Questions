@@ -5,9 +5,7 @@ public:
     MyHashMap() {
         bucket = 1000000;
         arr = new int[bucket];
-        for(int i = 0; i < 1000000; i++) {
-            arr[i] = -1;
-        }
+        fill_n(arr, 1000000, -1);
     }
     
     int hash(int key) {
