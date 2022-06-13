@@ -1,40 +1,27 @@
 class Solution {
-public:     
-    bool isValid(string &s) {
-        stack<char> st;
-        for(int i = 0; i < s.length(); i++) {
-            if(s.at(i) == '(') {
-                st.push(s.at(i));
-            } else if(s.at(i) == ')') {
-                if(!st.empty() && st.top() == '(') {
-                    st.pop();
-                } else {
-                    return false;
-                }
+public:
+    void generate(int n, int l, int r, string &ds, vector<string> &ans) {
+        if(l == n & r == n) {
+            ans.push_back(ds);
+        } else {
+            if(l < n) {
+                ds.push_back('(');
+                generate(n, l + 1, r, ds, ans);
+                ds.pop_back();
+            }
+            if(r < l) {
+                ds.push_back(')');
+                generate(n, l, r + 1, ds, ans);
+                ds.pop_back();
             }
         }
-        return (st.empty());
     }
     
-    void helper(int s, vector<string> &ans, string &ds) {
-        if(ds.length() == s) {
-            if(isValid(ds)) {
-                ans.push_back(ds);   
-            }
-            return;
-        }
-        ds.push_back('(');
-        helper(s, ans, ds);
-        ds.pop_back();
-        ds.push_back(')');
-        helper(s, ans, ds);
-        ds.pop_back();
-    }
     
     vector<string> generateParenthesis(int n) {
         vector<string> ans;
         string ds = "";
-        helper(n * 2, ans, ds);
+        generate(n, 0, 0, ds, ans);
         return ans;
     }
 };
