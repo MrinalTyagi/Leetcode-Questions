@@ -13,7 +13,7 @@ class Solution{
     {
         //Your code here
         //return vector with correct order of elements
-        unordered_set<int> s1(arr1, arr1 + n);
+        set<int> s1(arr1, arr1 + n);
         for(int i = 0; i < m; i++) {
             s1.insert(arr2[i]);
         }
@@ -21,7 +21,6 @@ class Solution{
         for(auto x: s1) {
             res.push_back(x);
         }
-        sort(res.begin(), res.end());
         return res;
     }
 };
