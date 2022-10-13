@@ -91,18 +91,7 @@ int countNodesinLoop(struct Node *head)
     if(fast == NULL || fast->next == NULL) {
         return 0;
     }
-    
-    // slow = head;
     int count = 0;
-    // while(true) {
-    //     slow = slow->next;
-    //     count++;
-    //     if(slow == head) {
-    //         cout<<"Here"<<endl;
-    //         return count;
-    //     }
-    // }
-    
     slow = head;
     while(slow != fast) {
         slow = slow->next;
