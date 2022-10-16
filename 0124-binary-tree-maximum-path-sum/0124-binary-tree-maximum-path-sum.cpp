@@ -21,7 +21,7 @@ public:
         auto right = maxPath(root->right);
         pair<int, int> res;
         res.first = max(root->val, max(left.first, right.first) + root->val);
-        res.second = max(res.first, max(root->val, max(left.first + right.first + root->val, max(left.second, right.second))));
+        res.second = max(res.first, max(left.first + right.first + root->val, max(left.second, right.second)));
         return res;
     }
     
