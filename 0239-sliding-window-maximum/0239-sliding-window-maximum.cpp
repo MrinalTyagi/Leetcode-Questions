@@ -8,7 +8,7 @@ public:
         }
         for(int i = k; i < nums.size(); i++) {
             res.push_back(*pq.begin());
-            pq.erase(pq.lower_bound(nums[i - k]));
+            pq.erase(pq.find(nums[i - k]));
             pq.insert(nums[i]);
         }
         res.push_back(*pq.begin());
