@@ -6,24 +6,18 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
-    bool bfs(int index, vector<int> *adj, vector<bool> &visited) {
-        queue<pair<int, int>> q;
-        q.push({index, -1});
+    bool dfs(int index, vector<int> *arr, vector<bool> &visited, int parent) {
         visited[index] = true;
-        while(!q.empty()) {
-            int temp = q.front().first;
-            int parent = q.front().second;
-            q.pop();
-            for(auto x: adj[temp]) {
-                if(!visited[x]) {
-                    visited[x] = true;
-                    q.push({x, temp});
-                } else {
-                    if(parent == -1 || x == parent) {
-                        continue;
-                    }
-                    return true;
+        for(auto x: arr[index]) {
+            if(!visited[x]) {
+                 if(dfs(x, arr, visited, index)) {
+                     return true;
+                 }
+            } else {
+                if(parent == -1 || parent == x) {
+                    continue;
                 }
+                return true;
             }
         }
         return false;
@@ -34,7 +28,7 @@ class Solution {
         // Code here
         vector<bool> visited(V, false);
         for(int i = 0; i < V; i++) {
-            if(!visited[i] && bfs(i, adj, visited)) {
+            if(!visited[i] && dfs(i, adj, visited, -1)) {
                 return true;
             }
         }
