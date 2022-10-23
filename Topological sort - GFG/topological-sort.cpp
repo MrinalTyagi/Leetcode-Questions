@@ -6,35 +6,34 @@ using namespace std;
 class Solution
 {
 	public:
+	
+	void helper(int index, vector<int> *adj, vector<bool> &visited, stack<int> &s) {
+	    visited[index] = true;
+	    for(auto x: adj[index]) {
+	        if(!visited[x]) {
+	            helper(x, adj, visited, s);
+	        }
+	    }
+	    s.push(index);
+	}
+	
 	//Function to return list containing vertices in Topological order. 
 	vector<int> topoSort(int V, vector<int> adj[]) 
 	{
 	    // code here
-	    vector<int> indeg(V, 0);
-	    for(int i = 0; i < V; i++) {
-	        for(auto x: adj[i]) {
-	            indeg[x]++;
-	        }
-	    }
-	    queue<int> q;
-	    for(int i = 0; i < V; i++) {
-	        if(indeg[i] == 0) {
-	            q.push(i);
-	        }
-	    }
-	    vector<int> res;
-	    while(!q.empty()) {
-	        int temp = q.front();
-	        q.pop();
-	        res.push_back(temp);
-	        for(auto x: adj[temp]) {
-	            indeg[x]--;
-	            if(indeg[x] == 0) {
-	                q.push(x);
-	            }
-	        }
-	    }
-	    return res;
+        stack<int> s;
+        vector<bool> visited(V, false);
+        for(int i = 0; i < V; i++) {
+            if(!visited[i]) {
+                helper(i, adj, visited, s);       
+            }
+        }
+        vector<int> res;
+        while(!s.empty()) {
+            res.push_back(s.top());
+            s.pop();
+        }
+        return res;
 	} 
 };
 
