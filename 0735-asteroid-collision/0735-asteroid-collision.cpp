@@ -18,7 +18,7 @@ public:
                 s.push(curr);
             }
         }
-        vector<int> res(s.size());
+        vector<int> res(s.size(), 0);
         int count = s.size() - 1;
         while(!s.empty()) {
             res.at(count) = s.top();
