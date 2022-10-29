@@ -4,8 +4,7 @@ public:
         if(s.length() != goal.length()) {
             return false;
         }
-        int i = 0;
-        for(; i < s.length(); i++) {
+        for(int i = 0; i < s.length(); i++) {
             if(s[i] == goal[0]) {
                 bool flag = true;
                 int first = i, second = 0;
