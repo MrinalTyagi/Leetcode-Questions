@@ -10,17 +10,15 @@ public:
 	    // code here
 	    int res = 0;
 	    int index = -1;
-	    for(int i = 0; i < arr.size(); i++) {
-	        int count = 0;
-	        for(int j = 0; j < m; j++) {
-	            if(arr[i][j] == 1) {
-	                count++;
-	            }
-	        }
-	        if(count> res) {
-	            res = count;
+	    for(int i = 0; i < n; i++) {
+	        int sum = accumulate(arr[i].begin(), arr[i].end(), 0);
+	        if(sum > res) {
+	            res = sum;
 	            index = i;
 	        }
+	    }
+	    if(res == 0) {
+	        return -1;
 	    }
 	    return index;
 	}
